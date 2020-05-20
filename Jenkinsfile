@@ -1,5 +1,6 @@
 pipeline {
     agent {
+        agent { docker { image 'node' } }
     }
     stages {
         stage('Restore') {
