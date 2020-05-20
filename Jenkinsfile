@@ -1,23 +1,13 @@
-#!groovy
-
-properties(
-    [
-        [$class: 'BuildDiscarderProperty', strategy:
-          [$class: 'LogRotator', artifactDaysToKeepStr: '14', artifactNumToKeepStr: '5', daysToKeepStr: '30', numToKeepStr: '60']],
-        pipelineTriggers(
-          [
-              pollSCM('H/15 * * * *'),
-              cron('@daily'),
-          ]
-        )
-    ]
-)
-node {
+pipeline {
     stage('NPM Install') {
-       npm install
+	steps{
+		sh 'npm install'
+	   }
     }
 	
     stage('Building') {
+	   steps {
         npm install
+		}
     }
 }
