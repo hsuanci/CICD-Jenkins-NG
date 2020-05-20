@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        agent { docker { image 'node' } }
+        docker { image 'node:10-alpine' }
     }
     stages {
         stage('Restore') {
