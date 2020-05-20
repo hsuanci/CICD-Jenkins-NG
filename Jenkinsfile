@@ -1,13 +1,16 @@
 pipeline {
-    stage('NPM Install') {
-	steps{
-		sh 'npm install'
-	   }
+    agent {
     }
-	
-    stage('Building') {
-	   steps {
-        npm install
-		}
+    stages {
+        stage('Restore') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm build'
+            }
+        }
     }
 }
